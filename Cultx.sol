@@ -15,7 +15,7 @@ import './libraries/SackMath.sol';
 
 
 
-contract Cultonomicsx is IBEP20, Manageable {
+contract CultonomicsFinal is IBEP20, Manageable {
     
     using SackMath for uint256;
 
@@ -24,9 +24,9 @@ contract Cultonomicsx is IBEP20, Manageable {
 
 
     string private _name = "Cultonomics";
-    string private _symbol = "CULTx";
-    uint8 private _decimals = 14;
-    uint256 private _tTotal = 4 * 10**_decimals;
+    string private _symbol = "Cultx";
+    uint8 private _decimals = 3;
+    uint256 private _tTotal = 250000000000 * 10**_decimals;
 
 
     mapping (address => uint256) private _tOwned;
@@ -68,7 +68,7 @@ contract Cultonomicsx is IBEP20, Manageable {
 
 
     bool public _isAutoFeeLiquifyEnabled = false;
-    uint256 public _minPendingFeesForAutoLiquify = 1 * 10**_decimals;
+    uint256 public _minPendingFeesForAutoLiquify = 100000 * 10**_decimals;
     uint256 public _autoLiquifyFactor = 10;
     bool private _isInternallySwapping = false;
     uint256 private _amountManagementFeesPendingLiquidation = 0;
@@ -79,11 +79,11 @@ contract Cultonomicsx is IBEP20, Manageable {
     address public _deadAddress = 0x000000000000000000000000000000000000dEaD;
     
     bool public _isAutoBuybackEnabled = false;
-    uint256 public _minReserveETHForAutoBuyback = 1 * 10**18 / 2;
+    uint256 public _minReserveETHForAutoBuyback = 1 * 10**18 / 10000;
     uint256 public _autoBuybackFactor = 2;
 
     bool public _isAutoReinjectEnabled = false;
-    uint256 public _minReserveETHForAutoReinject = 125 * 10**18;
+    uint256 public _minReserveETHForAutoReinject = 125 * 10**18 / 10000;
     uint256 public _autoReinjectFactor = 1;
 
 
@@ -192,8 +192,8 @@ contract Cultonomicsx is IBEP20, Manageable {
 
 
     function _approve(address owner, address spender, uint256 tAmount) private {
-        require(owner != address(0), "cannot approve allwoance from the zero address");
-        require(spender != address(0), "cannot approve allwoance to the zero address");
+        require(owner != address(0), "cannot approve allowance from the zero address");
+        require(spender != address(0), "cannot approve allowance to the zero address");
 
         _tAllowances[owner][spender] = tAmount;
         emit Approval(owner, spender, tAmount);
