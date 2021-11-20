@@ -18,12 +18,7 @@ pragma solidity ^0.8.7;
 
 
 
-import './contexts/Manageable.sol';
 
-import './interfaces/IBEP20.sol';
-import './interfaces/IPancakeFactory.sol';
-import './interfaces/IPancakePair.sol';
-import './interfaces/IPancakeRouter02.sol';
 
 import './libraries/SackMath.sol';
 
